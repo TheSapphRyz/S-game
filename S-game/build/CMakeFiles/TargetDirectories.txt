@@ -1,0 +1,3 @@
+C:/Users/sapph1ren/source/repos/S-game/S-game/build/CMakeFiles/S-game.dir
+C:/Users/sapph1ren/source/repos/S-game/S-game/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/sapph1ren/source/repos/S-game/S-game/build/CMakeFiles/ZERO_CHECK.dir

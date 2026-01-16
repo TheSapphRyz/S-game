@@ -37,6 +37,7 @@ typedef struct {
 	float u, v;
 	int max_spd, event_type, type;
 	float zoom, hungry;
+	uint8_t t;
 } Player;
 Player p;
 

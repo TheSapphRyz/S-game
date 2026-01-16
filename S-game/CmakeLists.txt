@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.20)
+
+# Политика для корректной работы MSVC_RUNTIME_LIBRARY (/MT)
+cmake_policy(SET CMP0091 NEW)
+
+project(S-game LANGUAGES C)
+
+# 1. Поиск SDL3 (имя пакета для find_package может отличаться, но обычно SDL3)
+find_package(SDL3 CONFIG REQUIRED)
+
+# 2. Твой файл
+add_executable(S-game main.c)
+
+# 3. Настройка статического рантайма (/MT)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
+# 4. Пути к твоим хедерам (stb_image, nanosvg), если они в папке с main.c
+target_include_directories(S-game PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+
+# 5. Флаги для статики
+target_compile_definitions(S-game PRIVATE 
+    SDL_STATIC_LIB 
+    _CRT_SECURE_NO_WARNINGS
+)
+
+# 6. Линковка (используем статическую цель SDL3)
+target_link_libraries(S-game PRIVATE SDL3::SDL3-static)
